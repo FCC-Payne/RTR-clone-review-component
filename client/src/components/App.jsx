@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dress: 1,
+      data: []
     }
     this.getUserData = this.getUserData.bind(this)
   }
@@ -18,19 +18,20 @@ class App extends React.Component {
   }
 
   getUserData() {
-    axios.get(`/reviews/${this.state.dress}`)
+    axios.get('/reviews/1')
     .then((res) => {
-      console.log(res)
+      this.setState({data: res.data});
+      console.log(this.state.data);
     })
     .catch((err) => {
-      console.log(err)
+      console.log('error', err)
     });
   }
 
   render() {
     return (
-      <div>
-        <ReviewList />
+      <div className="reviews-component pdp">
+        <ReviewList reviews={this.state.data}/>
       </div>
     );
   }
