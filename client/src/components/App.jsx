@@ -9,8 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       dress: 1,
-      data: []
-    }
+      data: [],
+    };
     this.getUserData = this.getUserData.bind(this)
   }
 
@@ -25,7 +25,7 @@ class App extends React.Component {
       console.log(this.state.data);
     })
     .catch((err) => {
-      console.log('error', err)
+      console.log('error', err);
     });
   }
 
