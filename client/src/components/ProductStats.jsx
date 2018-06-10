@@ -13,38 +13,26 @@ const ProductStats = (props) => (
           <div className="header-font">Fit</div>
           <div>
             <table className="fit-summary">
-              <tr className="fit-summary_row">
-                <td className="fit-summary_label label">large</td>
-                <td className="fit-summary_bar">
-                  <div className="fit-summary_bar-background">
-                    <div className="fit-summary_bar-highlight"></div>
-                  </div>
-                </td>
-                <td className="fit-summary_count label">(0)</td>
-              </tr>
-              <tr className="fit-summary_row">
-                <td className="fit-summary_label label">true to size</td>
-                <td className="fit-summary_bar">
-                  <div className="fit-summary_bar-background">
-                    <div className="fit-summary_bar-highlight"></div>
-                  </div>
-                </td>
-                <td className="fit-summary_count label">(0)</td>
-              </tr>
-              <tr className="fit-summary_row">
-                <td className="fit-summary_label label">small</td>
-                <td className="fit-summary_bar">
-                  <div className="fit-summary_bar-background">
-                    <div className="fit-summary_bar-highlight"></div>
-                  </div>
-                </td>
-                <td className="fit-summary_count label">(0)</td>
-              </tr>
+              <tbody>
+              {
+                props.fitKeys.map((fitKey) => (
+                  <tr className="fit-summary_row">
+                    <td className="fit-summary_label label">{fitKey}</td>
+                    <td className="fit-summary_bar">
+                      <div className="fit-summary_bar-background">
+                        <div className="fit-summary_bar-highlight"></div>
+                      </div>
+                    </td>
+                    <td className="fit-summary_count label">(0)</td>
+                  </tr>
+                ))
+              }
+              </tbody>
             </table>
           </div>
         </div>
         <div>
-          Photo Carousel
+          <PhotoCarousel />
         </div>
       </div>
     </div>
