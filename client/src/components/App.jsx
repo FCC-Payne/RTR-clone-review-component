@@ -10,8 +10,9 @@ class App extends React.Component {
     this.state = {
       dress: 1,
       data: [],
+      fitKeys: ['large', 'true to size', 'small'],
     };
-    this.getUserData = this.getUserData.bind(this)
+    this.getUserData = this.getUserData.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="reviews-component">
-        <ProductStats />
+        <ProductStats fitKeys={this.state.fitKeys}/>
         <ReviewList reviews={this.state.data}/>
       </div>
     );
