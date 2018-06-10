@@ -1,10 +1,9 @@
 import React from 'react';
 
 const ReviewListEntry = (props) => (
-  <div>
   <div className="indiv-review">
     <div className="reviewer-info label">
-      <div className="reviewer-nickname">
+      <div className="reviewer-nickname header-font">
         <span>{props.review.name || "RTR Customer"}</span>
       </div>
       <div className="label">
@@ -14,7 +13,7 @@ const ReviewListEntry = (props) => (
         <span className="review-detail-label">rented for:</span><strong className="review-detail-value">{props.review.occasion}</strong>
       </div>
       <br></br>
-      <div className="reviewer-stats">
+      <div>
         <div className="label">
           <span className="review-detail-label">usually wears:</span><strong className="review-detail-value">{props.review.size}</strong>
         </div>
@@ -36,11 +35,11 @@ const ReviewListEntry = (props) => (
       </div>
     </div>
     <div className="review-content">
-      <p>rating: {props.review.rating}</p>
-      <p>{props.review.review_title}</p>
-      <p>{props.review.review_body}</p>
+      <p className="review-rating">rating: {props.review.rating}</p>
+      <div className="review-date label">{props.review.date_posted}</div>
+      <div className="review-title header-font">{props.review.review_title}</div>
+      <p className="review-text proxima-body-font body-font">{props.review.review_body}</p>
     </div>
-  </div>
   </div>
 );
 

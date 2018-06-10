@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
+import ProductStats from './ProductStats.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +31,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="reviews-component pdp">
+      <div className="reviews-component">
+        <ProductStats />
         <ReviewList reviews={this.state.data}/>
       </div>
     );

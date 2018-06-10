@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../public')));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-app.get('/reviews/1', (req, res) => {
+app.get('/reviews/*', (req, res) => {
   //TODO: look into sending the dress number along with the request body, and passing to the database to improve the query and make it more dynamic
   db.getReviews((err, data) => {
     if (err) {
