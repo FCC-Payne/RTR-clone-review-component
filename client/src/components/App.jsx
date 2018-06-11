@@ -60,7 +60,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="reviews-component">
-        <ProductStats fitKeys={this.state.fitKeys}/>
+        <ProductStats fitKeys={this.state.fitKeys} count={this.state.data.length}/>
         <ReviewList reviews={this.state.data} getDate={this.getFormattedDate}/>
       </div>
     );
