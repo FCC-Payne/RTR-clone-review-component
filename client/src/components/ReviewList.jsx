@@ -4,7 +4,10 @@ import ReviewFilter from './ReviewFilter.jsx';
 
 const ReviewList = (props) => (
   <div className="reviews">
-    <ReviewFilter />
+    <ReviewFilter
+      handleOptionChange={props.handleOptionChange}
+      showFilterForm={props.showFilterForm}
+    />
     {
       props.reviews.map((review, index) => 
         <ReviewListEntry key={index} review={review} />
