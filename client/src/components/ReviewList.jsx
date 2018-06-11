@@ -5,10 +5,11 @@ const ReviewList = (props) => (
   <div className="reviews">
     {
       props.reviews.map((review, index) => 
-        <ReviewListEntry key={index} review={review} />
+        <ReviewListEntry key={index} review={review} getDate={props.getDate}/>
       )
     }
   </div>
 );
+
 
 export default ReviewList;

@@ -13,6 +13,7 @@ class App extends React.Component {
       fitKeys: ['large', 'true to size', 'small'],
     };
     this.getUserData = this.getUserData.bind(this);
+    this.getFormattedDate = this.getFormattedDate.bind(this);
   }
 
   componentDidMount() {
@@ -30,11 +31,37 @@ class App extends React.Component {
     });
   }
 
+  getFormattedDate(date) {
+    let formattedDate = new Date(date);
+    let day = formattedDate.getDate();
+    let month = formattedDate.getMonth();
+    let year = formattedDate.getFullYear();
+
+    let months = {
+      0: 'January',
+      1: 'February',
+      2: 'March',
+      3: 'April',
+      4: 'May',
+      5: 'June',
+      6: 'July',
+      7: 'August',
+      8: 'September',
+      9: 'October',
+      10: 'November',
+      11: 'December',
+    };
+
+    month = months[month];
+
+    return `${month} ${day}, ${year}`;
+  }
+
   render() {
     return (
       <div className="reviews-component">
         <ProductStats fitKeys={this.state.fitKeys}/>
-        <ReviewList reviews={this.state.data}/>
+        <ReviewList reviews={this.state.data} getDate={this.getFormattedDate}/>
       </div>
     );
   }
