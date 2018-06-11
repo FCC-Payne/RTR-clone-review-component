@@ -5,7 +5,7 @@ const ProductStats = (props) => (
   <div className="reviews-header">
     <div className="reviews-summary-content">
       <div>
-        <h2 className="review-count">3 reviews</h2>
+        <h2 className="review-count">{props.count} reviews</h2>
         <div>average rating: 4/5 stars</div>
       </div>
       <div className="reviews-header_fit-photo">
