@@ -7,6 +7,9 @@ const ReviewList = (props) => (
     <ReviewFilter
       handleOptionChange={props.handleOptionChange}
       showFilterForm={props.showFilterForm}
+      sizes={props.sizes}
+      heights={props.heights}
+      busts={props.busts}
     />
     {
       props.reviews.map((review, index) => 
