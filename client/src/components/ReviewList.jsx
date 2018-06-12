@@ -2,7 +2,7 @@ import React from 'react';
 import ReviewListEntry from './ReviewListEntry.jsx';
 import ReviewFilter from './ReviewFilter.jsx';
 
-const ReviewList = (props) => (
+const ReviewList = props => (
   <div className="reviews">
     <ReviewFilter
       handleOptionChange={props.handleOptionChange}

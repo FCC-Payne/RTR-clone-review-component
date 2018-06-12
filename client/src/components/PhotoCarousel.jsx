@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PhotoCarousel = (props) => (
+const PhotoCarousel = props => (
   <div>
     PhotoCarousel
   </div>

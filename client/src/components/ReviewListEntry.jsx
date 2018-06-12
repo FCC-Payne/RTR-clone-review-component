@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewListEntry = (props) => {
+const ReviewListEntry = props => {
   let name = props.review.name || "RTR Customer";
   let date = props.getDate(props.review.date_posted);
 

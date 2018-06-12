@@ -1,7 +1,7 @@
 import React from 'React';
 import PhotoCarousel from './PhotoCarousel.jsx';
 
-const ProductStats = (props) => (
+const ProductStats = props => (
   <div className="reviews-header">
     <div className="reviews-summary-content">
       <div>
@@ -15,7 +15,7 @@ const ProductStats = (props) => (
             <table className="fit-summary">
               <tbody>
               {
-                props.fitKeys.map((fitKey) => (
+                props.fitKeys.map(fitKey => (
                   <tr className="fit-summary_row">
                     <td className="fit-summary_label label">{fitKey}</td>
                     <td className="fit-summary_bar">

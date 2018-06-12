@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ReviewFilter = (props) => {
+const ReviewFilter = props => {
   let showFilterForm = props.showFilterForm;
-  let heights = props.heights.map((height) => {
+  let heights = props.heights.map(height => {
     height = height + '"';
     height = height.split('-').join('\' ');
     return height;
-  })
+  });
+
   return (
     <div className="review-filters-wrapper">
       <div className="review-filters">
