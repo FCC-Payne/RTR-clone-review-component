@@ -42,7 +42,6 @@ class App extends React.Component {
     });
   }
 
-
   getFormattedDate(date) {
     let formattedDate = new Date(date);
     let day = formattedDate.getDate();
