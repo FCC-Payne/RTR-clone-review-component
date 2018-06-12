@@ -30,6 +30,10 @@ div {
   display: block;
 }
 
+form {
+  display: block;
+}
+
 strong {
   text-transform: inherit;
   text-decoration: inherit;
@@ -53,19 +57,43 @@ option {
   padding: 0px 2px 1px;
 }
 
+select:focus {
+  outline: none;
+  border: 1px solid currentColor;
+}
+
 select {
-  /*background: #FFF url("/images/sprites/reb/svg/dark_drop_arrow_sm.svg") no-repeat right 12px center;*/
+  background: #FFF no-repeat right 12px center;
   box-sizing: border-box;
   border-radius: 0;
-  font-weight: 300;
+  font-weight: 200;
   display: block;
   height: 44px;
   color: #333333;
 }
 
-select:focus {
-  outline: none;
-  border: 1px solid currentColor;
+select, input {
+  font-family: Genath-Regular, serif;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 30px;
+  padding: 5px 10px;
+  margin: 0;
+  border: 1px solid #DDDDDD;
+}
+
+input {
+  width: 160px;
+  float: left;
+  border: 1px solid #DDDDDD;
+}
+
+input:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
@@ -157,21 +185,22 @@ select:focus {
 /* REVIEW FILTER */
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 
-.review-filter {
+.review-filters-wrapper {
   width: 990px;
   padding: 20px 0;
   margin: 50px auto 0 auto;
 }
 
-.review-filter-type {
+.review-filters {
   width: 35%;
   /*float: left;*/
 }
 
-.review-filter-type select {
+.review-filters select {
   width: auto;
   min-width: 150px;
 }
+
 
 
 
