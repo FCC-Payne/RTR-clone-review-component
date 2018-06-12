@@ -159,6 +159,7 @@ class App extends React.Component {
         <ReviewList
           reviews={this.state.data}
           handleOptionChange={this.handleOptionChange}
+          getDate={this.getFormattedDate}
           showFilterForm={this.state.showFilterForm}
           sizes={this.state.sizes}
           heights={this.state.heights}
