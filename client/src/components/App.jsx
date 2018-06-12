@@ -11,9 +11,12 @@ class App extends React.Component {
       dress: 1,
       data: [],
       fitKeys: ['large', 'true to size', 'small'],
+      counter: 0,
+
     };
     this.getUserData = this.getUserData.bind(this);
     this.getFormattedDate = this.getFormattedDate.bind(this);
+    this.renderReviews = this.renderReviews.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +33,7 @@ class App extends React.Component {
       console.log('error', err);
     });
   }
+
 
   getFormattedDate(date) {
     let formattedDate = new Date(date);
@@ -55,6 +59,26 @@ class App extends React.Component {
     month = months[month];
 
     return `${month} ${day}, ${year}`;
+  }
+
+  onSelect(event) {
+    let options = {
+      'wlm': 1,
+      'featured': 2,
+      'newest': 3,
+      'rating': 4,
+    }
+
+    this.setState({counter: options[event.target.value]})
+  }
+
+  renderReviews() {
+    let data = [].concat(this.state.data)
+    if (this.state.counter === 0 || this.state.counter === 3) {
+      // data.sort
+    }
+
+    return data;
   }
 
   render() {
