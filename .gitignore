@@ -5,7 +5,9 @@
 node_modules
 
 #webpack default output folder
-dist/
+client/dist/bundle.js
+client/dist/Proxima Nova Regular.ttf
+client/dist/Engravers' Gothic BT.ttf
 
 #SQL mock data seeding
 dresses.sql

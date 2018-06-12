@@ -12,11 +12,13 @@ class App extends React.Component {
       data: [],
       fitKeys: ['large', 'true to size', 'small'],
       counter: 0,
+      showFilterForm: true,
 
     };
     this.getUserData = this.getUserData.bind(this);
     this.getFormattedDate = this.getFormattedDate.bind(this);
     this.renderReviews = this.renderReviews.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
   componentDidMount() {
@@ -61,7 +63,7 @@ class App extends React.Component {
     return `${month} ${day}, ${year}`;
   }
 
-  onSelect(event) {
+  handleOptionChange(event) {
     let options = {
       'wlm': 1,
       'featured': 2,
@@ -69,23 +71,39 @@ class App extends React.Component {
       'rating': 4,
     }
 
-    this.setState({counter: options[event.target.value]})
+    this.setState({counter: options[event.target.value]}, this.renderReviews);
   }
 
   renderReviews() {
     let data = [].concat(this.state.data)
+
+    // sort types
     if (this.state.counter === 0 || this.state.counter === 3) {
-      // data.sort
+      data.sort((a, b) => a.date_posted < b.date_posted);
+    } else if (this.state.counter === 1) {
+      // sort by closest measurement: if I request 5-11 height, I want
+    } else if (this.state.counter === 2) {
+      // sort by if there are user photos, then rating, then date
+    } else if (this.state.counter === 4) {
+      // sort by highest rating, then by date
     }
 
-    return data;
+    if (this.state.counter === 0 || this.state.counter === 1) {
+      this.setState({showFilterForm: true});
+    } else {
+      this.setState({showFilterForm: false});
+    }
   }
 
   render() {
     return (
       <div className="reviews-component">
-        <ProductStats fitKeys={this.state.fitKeys} count={this.state.data.length}/>
-        <ReviewList reviews={this.state.data} getDate={this.getFormattedDate}/>
+        <ProductStats fitKeys={this.state.fitKeys}/>
+        <ReviewList
+          reviews={this.state.data}
+          handleOptionChange={this.handleOptionChange}
+          showFilterForm={this.state.showFilterForm}
+        />
       </div>
     );
   }
