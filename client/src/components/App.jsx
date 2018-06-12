@@ -146,9 +146,15 @@ class App extends React.Component {
     }
 
     if (this.state.counter === 0 || this.state.counter === 1) {
-      this.setState({showFilterForm: true}, this.setState({data: sorted}));
+      this.setState({
+        showFilterForm: true,
+        data: sorted,
+      });
     } else {
-      this.setState({showFilterForm: false}, this.setState({data: sorted}));
+      this.setState({
+        showFilterForm: false,
+        data: sorted,
+      });
     }
   }
 
