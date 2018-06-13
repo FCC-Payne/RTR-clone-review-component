@@ -19,17 +19,17 @@ class App extends React.Component {
       avgRating: 0,
     };
     this.getUserData = this.getUserData.bind(this);
-    this.getFormattedDate = this.getFormattedDate.bind(this);
     this.renderReviews = this.renderReviews.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.changeSortType = this.changeSortType.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
     this.sortByRating = this.sortByRating.bind(this);
     this.sortByFeatured = this.sortByFeatured.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.sortByMeasurements = this.sortByMeasurements.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
     this.getPercentage = this.getPercentage.bind(this);
     this.setHeights = this.setHeights.bind(this);
+    this.getFormattedDate = this.getFormattedDate.bind(this);
     this.getFormattedHeight = this.getFormattedHeight.bind(this);
   }
 
@@ -128,12 +128,44 @@ class App extends React.Component {
 
   sortByMeasurements(userInput, inputType) {
     let data = [].concat(this.state.data);
+    let busts = {
+      '32AA': 32.1,
+      '32A': 32.2,
+      '32B': 32.3,
+      '32C': 32.4,
+      '32D': 32.5,
+      '34AA': 34.1,
+      '34A': 34.2,
+      '34B': 34.3,
+      '34C': 34.4,
+      '34D': 34.5,
+      '36AA': 36.1,
+      '36A': 36.2,
+      '36B': 36.3,
+      '36C': 36.4,
+      '36D': 36.5,
+      '38AA': 38.1,
+      '38A': 38.2,
+      '38B': 38.3,
+      '38C': 38.4,
+      '38D': 38.5,
+      null: 0,
+    }
 
     let sorted = data.sort((a, b) => {
-      let aa = a[inputType];
-      let bb = b[inputType];
+      let aa;
+      let bb;
 
-      return Math.abs(aa - userInput) - Math.abs(bb - userInput);
+      if (inputType === 'bust') {
+        aa = busts[a[inputType]];
+        bb = busts[b[inputType]];
+        return Math.abs(aa - busts[userInput]) - Math.abs(bb - busts[userInput]);
+      } else {
+        aa = a[inputType];
+        bb = b[inputType];
+        return Math.abs(aa - userInput) - Math.abs(bb - userInput);
+      }
+
     });
 
     this.setState({data: sorted});
