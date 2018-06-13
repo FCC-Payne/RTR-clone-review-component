@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PhotoCarousel = (props) => (
-  <div>
+const PhotoCarousel = props => (
+  <div className="photo-carousel-wrapper">
     PhotoCarousel
   </div>
 );

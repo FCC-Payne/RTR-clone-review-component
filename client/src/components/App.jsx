@@ -8,23 +8,38 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dress: 1,
       data: [],
       fitKeys: ['large', 'true to size', 'small'],
+      counter: 0,
+      showFilterForm: true,
+      sizes: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22],
+      heights: ['4-6', '4-7', '4-8', '4-9', '4-10', '4-11', '5-1', '5-2', '5-3', '5-4', '5-5', '5-6', '5-7', '5-8', '5-9', '5-10', '5-11', '6-1', '6-2', '6-3', '6-4', '6-5', '6-6'],
+      busts: ['32AA', '32A', '32B', '32C', '32D', '34AA', '34A', '34B', '34C', '34D', '36AA', '36A', '36B', '36C', '36D', '38AA', '38A', '38B', '38C', '38D'],
+      age: 0,
+      avgRating: 0,
     };
     this.getUserData = this.getUserData.bind(this);
     this.getFormattedDate = this.getFormattedDate.bind(this);
+    this.renderReviews = this.renderReviews.bind(this);
+    this.changeSortType = this.changeSortType.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
+    this.sortByRating = this.sortByRating.bind(this);
+    this.sortByFeatured = this.sortByFeatured.bind(this);
+    this.sortByMeasurements = this.sortByMeasurements.bind(this);
+    this.getAverageRating = this.getAverageRating.bind(this);
+    this.getPercentage = this.getPercentage.bind(this);
   }
 
   componentDidMount() {
-    this.getUserData();
+    let path = document.location.pathname.split('/')[1];
+    this.getUserData(path);
   }
 
-  getUserData() {
-    axios.get('/reviews/1')
+  getUserData(productId) {
+    axios.get(`/${productId}/reviews`)
     .then((res) => {
-      this.setState({data: res.data});
-      console.log(this.state.data);
+      this.setState({data: this.sortByDate(res.data), avgRating: this.getAverageRating(res.data)});
+        console.log(this.state.data);
     })
     .catch((err) => {
       console.log('error', err);
@@ -57,11 +72,139 @@ class App extends React.Component {
     return `${month} ${day}, ${year}`;
   }
 
+  changeSortType(event) {
+    let options = {
+      'wlm': 1,
+      'featured': 2,
+      'newest': 3,
+      'rating': 4,
+    }
+
+    this.setState({counter: options[event.target.value]}, this.renderReviews);
+  }
+
+  sortByDate(data) {
+    return data.sort((a, b) => {
+      let aa = a.date_posted.slice(0, 10).split('-');
+      let bb = b.date_posted.slice(0, 10).split('-');
+      return bb[0] - aa[0] || bb[1] - aa[1] || bb[2] - aa[2];
+    });
+  }
+
+  sortByRating(data) {
+    return data.sort((a, b) => {
+      let aa = a.date_posted.split('-');
+      let bb = b.date_posted.split('-');
+      let cc = a.rating;
+      let dd = b.rating;
+
+      return dd - cc || bb[0] - aa[0] || bb[1] - aa[1] || bb[2] - aa[2];
+    });
+  }
+
+  sortByFeatured(data) {
+    return data.sort((a, b) => {
+      let aa = a.date_posted.split('-');
+      let bb = b.date_posted.split('-');
+      let cc = a.rating;
+      let dd = b.rating;
+      let ePhotos = [a.url1, a.url2, a.url3];
+      let fPhotos = [b.url1, b.url2, b.url3];
+      let ee = [];
+      let ff = [];
+
+      for (var i = 0; i < ePhotos.length; i++) {
+        if (ePhotos[i]) {
+          ee.push(ePhotos[i]);
+        }
+      }
+
+      for (var j = 0; j < fPhotos.length; j++) {
+        if (fPhotos[j]) {
+          ff.push(fPhotos[j]);
+        }
+      }
+
+      return ff.length - ee.length || dd - cc || bb[0] - aa[0] || bb[1] - aa[1] || bb[2] - aa[2];
+    });
+  }
+
+  sortByMeasurements(data, input) {
+    return data.sort((a, b) => {
+      return Math.abs(a - input) - Math.abs(b - input);
+    });
+  }
+
+  renderReviews() {
+    let data = [].concat(this.state.data);
+    let sorted;
+
+    if (this.state.counter === 0 || this.state.counter === 3) {
+      sorted = this.sortByDate(data);
+    } else if (this.state.counter === 1) {
+      // sorted = this.sortByMeasurements(data);
+    } else if (this.state.counter === 2) {
+      sorted = this.sortByFeatured(data);
+    } else if (this.state.counter === 4) {
+      sorted = this.sortByRating(data);
+    }
+
+    if (this.state.counter === 0 || this.state.counter === 1) {
+      this.setState({
+        showFilterForm: true,
+        data: sorted,
+      });
+    } else {
+      this.setState({
+        showFilterForm: false,
+        data: sorted,
+      });
+    }
+  }
+
+  getAverageRating(data) {
+    let sum = 0;
+
+    for (var i = 0; i < data.length; i++) {
+      sum += data[i].rating;
+    }
+
+    let avg = Math.round((sum / data.length));
+    return avg;
+  }
+
+  getPercentage(keyword) {
+    let data = [].concat(this.state.data);
+    let count = 0;
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].fit === keyword) {
+        count++;
+      }
+    }
+
+    let percentage = count > 0 ? (count / data.length) : 0;
+    return percentage;
+  }
+
   render() {
     return (
       <div className="reviews-component">
-        <ProductStats fitKeys={this.state.fitKeys} count={this.state.data.length}/>
-        <ReviewList reviews={this.state.data} getDate={this.getFormattedDate}/>
+        <ProductStats
+          fitKeys={this.state.fitKeys}
+          count={this.state.data.length}
+          avg={this.state.avgRating}
+          getPercentage={this.getPercentage}
+        />
+        <ReviewList
+          reviews={this.state.data}
+          changeSortType={this.changeSortType}
+          getDate={this.getFormattedDate}
+          showFilterForm={this.state.showFilterForm}
+          sizes={this.state.sizes}
+          heights={this.state.heights}
+          busts={this.state.busts}
+        />
       </div>
     );
   }
