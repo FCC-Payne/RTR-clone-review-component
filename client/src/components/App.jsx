@@ -21,24 +21,25 @@ class App extends React.Component {
     this.getUserData = this.getUserData.bind(this);
     this.getFormattedDate = this.getFormattedDate.bind(this);
     this.renderReviews = this.renderReviews.bind(this);
-    this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.changeSortType = this.changeSortType.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
     this.sortByRating = this.sortByRating.bind(this);
     this.sortByFeatured = this.sortByFeatured.bind(this);
     this.sortByMeasurements = this.sortByMeasurements.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
+    this.getPercentage = this.getPercentage.bind(this);
   }
 
   componentDidMount() {
     let path = document.location.pathname.split('/')[1];
-    console.log(document.location.pathname.split('/'));
     this.getUserData(path);
   }
 
   getUserData(productId) {
     axios.get(`/${productId}/reviews`)
     .then((res) => {
-      this.setState({data: this.sortByDate(res.data)}, this.getAverageRating(res.data));
+      this.setState({data: this.sortByDate(res.data), avgRating: this.getAverageRating(res.data)});
+        console.log(this.state.data);
     })
     .catch((err) => {
       console.log('error', err);
@@ -71,7 +72,7 @@ class App extends React.Component {
     return `${month} ${day}, ${year}`;
   }
 
-  handleOptionChange(event) {
+  changeSortType(event) {
     let options = {
       'wlm': 1,
       'featured': 2,
@@ -168,8 +169,22 @@ class App extends React.Component {
       sum += data[i].rating;
     }
 
-    let avg = (sum / data.length);
-    this.setState({avgRating: avg});
+    let avg = Math.round((sum / data.length));
+    return avg;
+  }
+
+  getPercentage(keyword) {
+    let data = [].concat(this.state.data);
+    let count = 0;
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].fit === keyword) {
+        count++;
+      }
+    }
+
+    let percentage = count > 0 ? (count / data.length) : 0;
+    return percentage;
   }
 
   render() {
@@ -179,10 +194,11 @@ class App extends React.Component {
           fitKeys={this.state.fitKeys}
           count={this.state.data.length}
           avg={this.state.avgRating}
+          getPercentage={this.getPercentage}
         />
         <ReviewList
           reviews={this.state.data}
-          handleOptionChange={this.handleOptionChange}
+          changeSortType={this.changeSortType}
           getDate={this.getFormattedDate}
           showFilterForm={this.state.showFilterForm}
           sizes={this.state.sizes}

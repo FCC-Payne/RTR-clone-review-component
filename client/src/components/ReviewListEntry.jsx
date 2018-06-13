@@ -3,6 +3,11 @@ import React from 'react';
 const ReviewListEntry = props => {
   let name = props.review.name || "RTR Customer";
   let date = props.getDate(props.review.date_posted);
+  let height = props.review.height + '"';
+  height = height.split('-').join('\' ');
+  let url1 = 'https://s3-us-west-1.amazonaws.com/rtr-review-user-pics/puppy' + props.review.url1 + '.jpg';
+  let url2 = 'https://s3-us-west-1.amazonaws.com/rtr-review-user-pics/puppy' + props.review.url2 + '.jpg';
+  let url3 = 'https://s3-us-west-1.amazonaws.com/rtr-review-user-pics/puppy' + props.review.url3 + '.jpg';
 
   return (
     <div className="indiv-review">
@@ -22,7 +27,7 @@ const ReviewListEntry = props => {
             <span className="review-detail-label">usually wears:</span><strong className="review-detail-value">{props.review.size}</strong>
           </div>
           <div className="label">
-            <span className="review-detail-label">height:</span><strong className="review-detail-value">{props.review.height}</strong>
+            <span className="review-detail-label">height:</span><strong className="review-detail-value">{height}</strong>
           </div>
           <div className="label">
             <span className="review-detail-label">age:</span><strong className="review-detail-value">{props.review.age}</strong>
@@ -39,10 +44,30 @@ const ReviewListEntry = props => {
         </div>
       </div>
       <div className="review-content">
-        <p className="review-rating">rating: {props.review.rating}</p>
+        <div className={"review-rating rev-stars-" + props.review.rating}></div>
         <div className="review-date label">{date}</div>
         <div className="review-title header-font">{props.review.review_title}</div>
         <p className="review-text proxima-body-font body-font">{props.review.review_body}</p>
+      </div>
+      <div className="review-photos">
+        <div className="user-photo" >
+          {
+            props.review.url1 &&
+            <img className="user-photo" src={url1} alt="user photo 1"></img>
+          }
+        </div>
+        <div className="user-photo" >
+          {
+            props.review.url2 &&
+            <img className="user-photo" src={url2} alt="user photo 2"></img>
+          }
+        </div>
+        <div className="user-photo" >
+          {
+            props.review.url3 &&
+            <img src={url3} alt="user photo 3"></img>
+          }
+        </div>
       </div>
     </div>
   )

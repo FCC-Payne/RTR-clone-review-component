@@ -21,6 +21,7 @@ const ReviewFilter = props => {
           </select>
         </form>
       </div>
+      <div>
       {
         showFilterForm &&
           <form>
@@ -28,7 +29,7 @@ const ReviewFilter = props => {
             <select>
               <option value="" selected>Size</option>
               {props.sizes.map((size, i) =>
-                <option key={i} value={`${size}`}>{size}</option>
+                <option key={i} value={size}>{size}</option>
                 )}
             </select>
             <select>
@@ -46,6 +47,7 @@ const ReviewFilter = props => {
             <input type="text" placeholder="Age"></input>
           </form>
       }
+      </div>
     </div>
   );
 };

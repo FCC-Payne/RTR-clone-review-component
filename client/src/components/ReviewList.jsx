@@ -5,7 +5,7 @@ import ReviewFilter from './ReviewFilter.jsx';
 const ReviewList = props => (
   <div className="reviews">
     <ReviewFilter
-      handleOptionChange={props.handleOptionChange}
+      changeSortType={props.changeSortType}
       showFilterForm={props.showFilterForm}
       sizes={props.sizes}
       heights={props.heights}
