@@ -39,7 +39,7 @@ CREATE TABLE reviews (
   date_posted date NOT NULL,
   size_worn varchar(5) NOT NULL,
   occasion varchar(15) NOT NULL,
-  fit varchar(10),
+  fit varchar(25),
   photos_id int,
   dress_id int NOT NULL,
   PRIMARY KEY (ID),

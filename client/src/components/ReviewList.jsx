@@ -8,12 +8,15 @@ const ReviewList = props => (
       changeSortType={props.changeSortType}
       showFilterForm={props.showFilterForm}
       sizes={props.sizes}
-      heights={props.heights}
       busts={props.busts}
+      heights={props.heights}
+      handleChange={props.handleChange}
+      reviews={props.reviews}
+      getHeight={props.getHeight}
     />
     {
       props.reviews.map((review, index) => 
-        <ReviewListEntry key={index} review={review} getDate={props.getDate}/>
+        <ReviewListEntry key={index} review={review} getDate={props.getDate} getHeight={props.getHeight}/>
       )
     }
   </div>

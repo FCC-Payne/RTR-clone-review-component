@@ -1,5 +1,4 @@
 import React from 'React';
-import PhotoCarousel from './PhotoCarousel.jsx';
 
 const ProductStats = props => {
 
