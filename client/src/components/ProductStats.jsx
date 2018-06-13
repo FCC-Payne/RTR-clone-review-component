@@ -33,9 +33,6 @@ const ProductStats = props => {
               </table>
             </div>
           </div>
-          <div>
-            <PhotoCarousel />
-          </div>
         </div>
       </div>
     </div>

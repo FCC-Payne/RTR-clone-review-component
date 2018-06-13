@@ -147,12 +147,12 @@ tbody {
   height: 16px;
 }
 
-/*.rev-stars-0 {
+.rev-stars-0 {
   background: url('https://sf-p.rtrcdn.com/images/svg/sprite.css-abf57cf5.svg') no-repeat;
-  background-position: 53.56679636835279% 24.489795918367346%;
-}*/
-
-
+  background-position: 24.38391699092088% 27.490996398559425%;
+  width: 89px;
+  height: 16px;
+}
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 /* PRODUCT STATS REVIEWS HEADER */
@@ -253,6 +253,7 @@ tbody {
   width: 990px;
   padding: 20px 0;
   margin: 50px auto 0 auto;
+  min-height: 70px;
 }
 
 .review-filters {
