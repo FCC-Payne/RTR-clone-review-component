@@ -18,7 +18,6 @@
 }
 
 body {
-  background-color: #F4EDE5;
   font-style: normal;
   font-family: serif;
   font-size: 15px;
@@ -108,6 +107,10 @@ tbody {
   display: block;
 }
 
+.reviews-partial {
+  background: rgba(244, 237, 229, 0.5);
+}
+
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 /* PRODUCT STATS REVIEWS HEADER */
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
@@ -169,10 +172,7 @@ tbody {
   width: 990px;
   display: flex;
   flex-direction: row;
-}
-
-.review-count {
-  white-space: nowrap;
+  justify-content: space-evenly;
 }
 
 .reviews-header_fit-photo {
@@ -181,13 +181,7 @@ tbody {
 }
 
 .reviews-header_fit-summary {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  margin-right: 12px;
-  margin-left: 12px;
-  float: left;
 }
 
 .reviews-header_fit-summary .header-font {
@@ -196,7 +190,6 @@ tbody {
 }
 
 .fit-summary {
-  margin: 20px auto;
   text-align: left;
   text-transform: uppercase;
 }
@@ -226,15 +219,11 @@ tbody {
 /* REVIEWS COMPONENT */
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 
-.reviews-component {
-  width: 990px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
 .reviews {
+  width: 990px;
   margin-top: 40px;
   background: transparent;
+  margin: auto;
 }
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/

@@ -279,24 +279,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="reviews-component">
-        <ProductStats
-          fitKeys={this.state.fitKeys}
-          count={this.state.data.length}
-          avg={this.state.avgRating}
-          getPercentage={this.getPercentage}
-        />
-        <ReviewList
-          reviews={this.state.data}
-          changeSortType={this.changeSortType}
-          getDate={this.getFormattedDate}
-          getHeight = {this.getFormattedHeight}
-          showFilterForm={this.state.showFilterForm}
-          sizes={this.state.sizes}
-          heights={this.state.heights}
-          busts={this.state.busts}
-          handleChange={this.handleChange}
-        />
+      <div className="reviews-partial">
+          <ProductStats
+            fitKeys={this.state.fitKeys}
+            count={this.state.data.length}
+            avg={this.state.avgRating}
+            getPercentage={this.getPercentage}
+          />
+          <ReviewList
+            reviews={this.state.data}
+            changeSortType={this.changeSortType}
+            getDate={this.getFormattedDate}
+            getHeight = {this.getFormattedHeight}
+            showFilterForm={this.state.showFilterForm}
+            sizes={this.state.sizes}
+            heights={this.state.heights}
+            busts={this.state.busts}
+            handleChange={this.handleChange}
+          />
       </div>
     );
   }
