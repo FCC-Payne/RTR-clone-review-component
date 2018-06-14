@@ -63,7 +63,8 @@ select {
   font-weight: 200;
   height: 44px;
   color: #333333;
-  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
 }
 
 select:focus {
@@ -90,7 +91,7 @@ select, input {
 }
 
 input {
-  width: 150px;
+  width: 138px;
   border: 1px solid #DDDDDD;
 }
 
@@ -105,10 +106,6 @@ img {
 
 tbody {
   display: block;
-}
-
-.reviews-partial {
-  background: rgba(244, 237, 229, 0.5);
 }
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
@@ -218,6 +215,10 @@ tbody {
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 /* REVIEWS COMPONENT */
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
+
+.reviews-partial {
+  background: rgba(244, 237, 229, 0.5);
+}
 
 .reviews {
   width: 990px;
