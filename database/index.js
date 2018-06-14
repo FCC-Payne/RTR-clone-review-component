@@ -13,6 +13,4 @@ const getReviews = (dressId, callback) => {
   });
 };
 
-module.exports = {
-  getReviews: getReviews,
-};
+module.exports.getReviews = getReviews;

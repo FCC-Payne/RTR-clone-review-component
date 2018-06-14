@@ -37,7 +37,7 @@ const ProductStats = props => (
 );
 
 ProductStats.propTypes = {
-  fitKeys: PropTypes.string.isRequired,
+  fitKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
   count: PropTypes.number.isRequired,
   avg: PropTypes.number.isRequired,
   getPercentage: PropTypes.func.isRequired,
