@@ -43,10 +43,9 @@ class App extends React.Component {
     axios.get(`/${productId}/reviews`)
     .then((res) => {
       this.setState({data: this.sortByDate(res.data), avgRating: this.getAverageRating(res.data)});
-        console.log(this.state.data);
     })
     .catch((err) => {
-      console.log('error', err);
+      console.error(err);
     });
   }
 
