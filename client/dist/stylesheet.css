@@ -284,6 +284,11 @@ tbody {
   font-style: italic;
 }
 
+.top-contributor {
+  color: #999999;
+  margin: 5px 0 5px 0;
+}
+
 label, .label {
   font-family: EngraversGothic-BT, regular;
   text-transform: uppercase;
