@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> A clone of the reviews component from Rent the Runway's product description page.
 
 ## Related Projects
 
