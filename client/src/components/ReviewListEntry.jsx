@@ -3,17 +3,23 @@ import React from 'react';
 const ReviewListEntry = props => {
   let name = props.review.name || "RTR Customer";
   let date = props.getDate(props.review.date_posted);
-  let height = props.review.height + '"';
-  height = height.split('-').join('\' ');
+  let height = props.getHeight(props.review.height);
+
   let url1 = 'https://s3-us-west-1.amazonaws.com/rtr-review-user-pics/puppy' + props.review.url1 + '.jpg';
   let url2 = 'https://s3-us-west-1.amazonaws.com/rtr-review-user-pics/puppy' + props.review.url2 + '.jpg';
   let url3 = 'https://s3-us-west-1.amazonaws.com/rtr-review-user-pics/puppy' + props.review.url3 + '.jpg';
+
+
 
   return (
     <div className="indiv-review">
       <div className="reviewer-info label">
         <div className="reviewer-nickname header-font">
           <span>{name}</span>
+          {
+            (props.review.review_count >= 25) &&
+            <div className="top-contributor label">top contributor</div>
+          }
         </div>
         <div className="label">
           <span className="review-detail-label">size worn:</span><strong className="review-detail-value">{props.review.size_worn}</strong>

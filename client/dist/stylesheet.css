@@ -2,7 +2,7 @@
 /* PRODUCT DESCRIPTION PAGE */
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 
-html {
+* {
   margin: 0;
   padding: 0;
 }
@@ -18,7 +18,6 @@ html {
 }
 
 body {
-  background-color: #F4EDE5;
   font-style: normal;
   font-family: serif;
   font-size: 15px;
@@ -64,7 +63,8 @@ select {
   font-weight: 200;
   height: 44px;
   color: #333333;
-  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
 }
 
 select:focus {
@@ -91,7 +91,7 @@ select, input {
 }
 
 input {
-  width: 150px;
+  width: 138px;
   border: 1px solid #DDDDDD;
 }
 
@@ -147,12 +147,12 @@ tbody {
   height: 16px;
 }
 
-/*.rev-stars-0 {
+.rev-stars-0 {
   background: url('https://sf-p.rtrcdn.com/images/svg/sprite.css-abf57cf5.svg') no-repeat;
-  background-position: 53.56679636835279% 24.489795918367346%;
-}*/
-
-
+  background-position: 24.38391699092088% 27.490996398559425%;
+  width: 89px;
+  height: 16px;
+}
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 /* PRODUCT STATS REVIEWS HEADER */
@@ -169,10 +169,7 @@ tbody {
   width: 990px;
   display: flex;
   flex-direction: row;
-}
-
-.review-count {
-  white-space: nowrap;
+  justify-content: space-evenly;
 }
 
 .reviews-header_fit-photo {
@@ -181,13 +178,7 @@ tbody {
 }
 
 .reviews-header_fit-summary {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  margin-right: 12px;
-  margin-left: 12px;
-  float: left;
 }
 
 .reviews-header_fit-summary .header-font {
@@ -196,7 +187,6 @@ tbody {
 }
 
 .fit-summary {
-  margin: 20px auto;
   text-align: left;
   text-transform: uppercase;
 }
@@ -211,7 +201,7 @@ tbody {
 }
 
 .fit-summary_bar-background {
-  width: 120px;
+  width: 100px;
   background-color: #F7F7F7;
   margin: 0 10px;
 }
@@ -223,26 +213,18 @@ tbody {
 }
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
-/* PHOTO CAROUSEL */
-/*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
-
-.photo-carousel-wrapper {
-  
-}
-
-/*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 /* REVIEWS COMPONENT */
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
 
-.reviews-component {
-  width: 990px;
-  margin: 0 auto;
-  padding: 0 30px;
+.reviews-partial {
+  background: rgba(244, 237, 229, 0.5);
 }
 
 .reviews {
+  width: 990px;
   margin-top: 40px;
   background: transparent;
+  margin: auto;
 }
 
 /*//////////////////////\\\\\\\\\\\\\\\\\\\\\*/
@@ -253,6 +235,7 @@ tbody {
   width: 990px;
   padding: 20px 0;
   margin: 50px auto 0 auto;
+  min-height: 70px;
 }
 
 .review-filters {
@@ -300,6 +283,11 @@ tbody {
 
 .reviewer-nickname span {
   font-style: italic;
+}
+
+.top-contributor {
+  color: #999999;
+  margin: 5px 0 5px 0;
 }
 
 label, .label {

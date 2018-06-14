@@ -1,5 +1,4 @@
 import React from 'React';
-import PhotoCarousel from './PhotoCarousel.jsx';
 
 const ProductStats = props => {
 
@@ -32,9 +31,6 @@ const ProductStats = props => {
                 </tbody>
               </table>
             </div>
-          </div>
-          <div>
-            <PhotoCarousel />
           </div>
         </div>
       </div>
