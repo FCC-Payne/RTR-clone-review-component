@@ -17,7 +17,7 @@ const ReviewListEntry = props => {
         <div className="reviewer-nickname header-font">
           <span>{name}</span>
           {
-            (props.review.review_count > 25) &&
+            (props.review.review_count >= 25) &&
             <div className="top-contributor label">top contributor</div>
           }
         </div>
