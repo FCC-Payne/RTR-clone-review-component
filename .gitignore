@@ -8,9 +8,3 @@ node_modules
 client/dist/bundle.js
 client/dist/Proxima Nova Regular.ttf
 client/dist/Engravers' Gothic BT.ttf
-
-#SQL mock data seeding
-dresses.sql
-photos.sql
-reviews.sql
-users.sql
