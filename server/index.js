@@ -7,7 +7,7 @@ const app = express();
 
 const options = {
   setHeaders: (res) => {
-    res.set({ 'Access-Control-Allow-Origin': 'http://localhost:3000' });
+    res.set({ 'Access-Control-Allow-Origin': '*' });
   },
 };
 
@@ -21,9 +21,9 @@ app.get('/:id/reviews', (req, res) => {
     if (err) {
       res.status(500).send('ERROR FETCHING FROM DATABASE', err);
     } else {
-      res.status(200).set({ 'Access-Control-Allow-Origin': 'http://localhost:3000' }).send(JSON.stringify(data));
+      res.status(200).set({ 'Access-Control-Allow-Origin': '*' }).send(JSON.stringify(data));
     }
   });
 });
 
-app.listen(3002);
+app.listen(8081);
