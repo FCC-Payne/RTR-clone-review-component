@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS rtr;
+DROP DATABASE IF EXISTS rtrreviews;
 
-CREATE DATABASE rtr;
+CREATE DATABASE rtrreviews;
 
-USE rtr;
+USE rtrreviews;
 
 CREATE TABLE users (
   user_id int NOT NULL AUTO_INCREMENT,
