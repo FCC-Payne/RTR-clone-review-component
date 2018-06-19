@@ -80,7 +80,7 @@ class App extends React.Component {
   }
 
   getUserData(productId) {
-    axios.get(`http://localhost:3002/${productId}/reviews`)
+    axios.get(`/${productId}/reviews`)
       .then((res) => {
         this.setState({
           data: this.constructor.sortByDate(res.data),
