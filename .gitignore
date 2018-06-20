@@ -8,3 +8,9 @@ node_modules
 client/dist/bundle.js
 client/dist/Proxima Nova Regular.ttf
 client/dist/Engravers' Gothic BT.ttf
+
+#zips for deployment
+Archive.zip
+rev-test-01.zip
+rev-test-02.zip
+rev-test-03-configchange.zip
