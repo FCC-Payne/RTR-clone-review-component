@@ -69,8 +69,6 @@ class App extends React.Component {
     this.constructor.getAverageRating = this.constructor.getAverageRating.bind(this);
     this.getPercentage = this.getPercentage.bind(this);
     this.setHeights = this.setHeights.bind(this);
-    // this.getFormattedDate = this.getFormattedDate.bind(this);
-    // this.getFormattedHeight = this.getFormattedHeight.bind(this);
   }
 
   componentDidMount() {
